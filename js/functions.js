@@ -28,7 +28,7 @@ function listarUsuarios() {
     $.getJSON(URL_SERVICIO, function (data) {
         salida = "";
         $.each(data, function (key, val) {
-            salida += "<li id='" + data[key].id + "'>" + data[key].nombres + " " + data[key].paterno + " " + data[key].materno + "</li>";
+            salida += "<li id='" + data[key].id + "'>" + data[key].id + " -  " + data[key].nombres + " " + data[key].paterno + " " + data[key].materno + "</li>";
         });
         $("#content").html(salida);
     });

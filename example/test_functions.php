@@ -1,7 +1,7 @@
 <?php
 
 // Includes
-//include '../app/utils/UtilesGeneral.php';
+include '../app/utils/UtilesGeneral.php';
 include '../app/dao/Conn.php';
 include '../app/utils/UtilesConfig.php';
 include '../app/model/Usuario.php';

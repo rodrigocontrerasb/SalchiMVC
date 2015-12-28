@@ -28,18 +28,22 @@ class UsuarioDao {
         // Conexion
         $conexion = new Conn();
         $link = $conexion->Conexion();
+
+        // Consulta
         $strsql = "SELECT * from usuario where id_usuario = " . $usuario->getId();
-        
-        $result = mysql_query($strsql, $link);
-        //$row = mysql_fetch_array($result, MYSQL_ASSOC);
-        $row = mysql_fetch_assoc($result);
+
+        // Ejecucion Consulta
+        $result = $conexion->query($link, $strsql);
+
+        // Arreglo Consulta
+        $row = $conexion->fetch_assoc($result);
 
         // Creacion de Usuario
         $usuario = new Usuario();
         $usuario = $usuarioDao->toUsuario($usuario, $row);
 
         // Cerrar Conexion
-        mysql_close($link);
+        $conexion->close($link);
 
         // Retorno
         return $usuario;
@@ -62,18 +66,19 @@ class UsuarioDao {
         // Conexion
         $conexion = new Conn();
         $link = $conexion->Conexion();
+
+        // Consulta
         $strsql = "SELECT * from usuario";
 
-        // Result
-        $result = mysql_query($strsql, $link);
+        // Ejecucion Consulta
+        $result = $conexion->query($link, $strsql);
 
         // Array Salida
         $x = 0;
         $arrUsuarios = array();
 
-        //while ($row = mysql_fetch_row($result)){ 
-        //while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-        while ($row = mysql_fetch_assoc($result)) {
+        // Recorrer
+        while ($row = $conexion->fetch_assoc($result)) {
 
             // Creacion de Usuario
             $usuario = new Usuario();
@@ -85,7 +90,7 @@ class UsuarioDao {
         }
 
         // Cerrar Conexion
-        mysql_close($link);
+        $conexion->close($link);
 
         // Retorno
         return $arrUsuarios;
@@ -108,20 +113,21 @@ class UsuarioDao {
         $link = $conexion->Conexion();
 
         // Consulta SQL
-        $sql = "INSERT INTO usuario (nombres_usuario,paterno_usuario, materno_usuario) VALUES ('" . $usuario->getNombres() . "' , '" . $usuario->getPaterno() . "' , '" . $usuario->getMaterno() . "' )";
+        $strsql = "INSERT INTO usuario (nombres_usuario,paterno_usuario, materno_usuario) VALUES ('" . $usuario->getNombres() . "' , '" . $usuario->getPaterno() . "' , '" . $usuario->getMaterno() . "' )";
 
-        $result = mysql_query($sql, $link);
+        // Ejecucion Consulta
+        $result = $conexion->query($link, $strsql);
 
         if (!$result) {
-            die('Could not enter data: ' . mysql_error());
+            die('Could not enter data: ' . $conexion->error());
         }
         echo "Entered data successfully\n";
 
         // Objeto Usuario
-        $usuario->setId(mysql_insert_id());
+        $usuario->setId($conexion->insert_id($link));
 
         // Cerrar Conexion
-        mysql_close($link);
+        $conexion->close($link);
 
         // Retorna Usuario Creado
         return $usuario;
@@ -143,16 +149,19 @@ class UsuarioDao {
         $conexion = new Conn();
         $link = $conexion->Conexion();
 
-        $sql = "UPDATE usuario SET nombres_usuario='" . $usuario->getNombres() . "' WHERE id_usuario=" . $usuario->getId();
+        // Consulta
+        $strsql = "UPDATE usuario SET nombres_usuario='" . $usuario->getNombres() . "' WHERE id_usuario=" . $usuario->getId();
 
-        $retval = mysql_query($sql, $link);
+        // Ejecucion Consulta
+        $retval = $conexion->query($link, $strsql);
+
         if (!$retval) {
-            die('Could not update data: ' . mysql_error());
+            die('Could not update data: ' . $conexion->error());
         }
         echo "Updated data successfully\n";
 
         // Cerrar Conexion
-        mysql_close($link);
+        $conexion->close($link);
 
         // Retorno
         return $usuario;
@@ -175,16 +184,18 @@ class UsuarioDao {
         $link = $conexion->Conexion();
 
         // Consulta 
-        $sql = 'DELETE FROM usuario WHERE id_usuario=' . $usuario->getId();
+        $strsql = 'DELETE FROM usuario WHERE id_usuario=' . $usuario->getId();
 
-        $retval = mysql_query($sql, $link);
+        // Ejecucion Consulta
+        $retval = $conexion->query($link, $strsql);
+
         if (!$retval) {
-            die('Could not delete data: ' . mysql_error());
+            die('Could not delete data: ' . $conexion->error());
         }
         echo "Deleted data successfully\n";
 
         // Cerra Conexion
-        mysql_close($link);
+        $conexion->close($link);
 
         // Retorno
         return $usuario;
