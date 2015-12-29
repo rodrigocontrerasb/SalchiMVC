@@ -1,91 +1,237 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+<html lang="en">
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Salchi-MVC - Un simple framework MVC & API para proyectos PHP/MySQL">
+        <meta name="author" content="Rodrigo Contreras B.">
 
-    <title>SalchiMVC by rodrigocontrerasb</title>
-  </head>
+        <title>Salchi-MVC - Un simple framework MVC & API para proyectos PHP/MySQL</title>
 
-  <body>
-    <header>
-      <div class="inner">
-        <h1>SalchiMVC</h1>
-        <h2>Un simple framework MVC &amp; API para proyectos PHP/MySQL</h2>
-        <a href="https://github.com/rodrigocontrerasb/SalchiMVC" class="button"><small>View project on</small> GitHub</a>
-      </div>
-    </header>
+        <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+        <link href="info/css/bootstrap.min.css" rel="stylesheet">
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h1>
-<a id="salchimvc---un-simple-framework-mvc--api-para-proyectos-phpmysql" class="anchor" href="#salchimvc---un-simple-framework-mvc--api-para-proyectos-phpmysql" aria-hidden="true"><span class="octicon octicon-link"></span></a>SalchiMVC - Un simple framework MVC &amp; API para proyectos PHP/MySQL</h1>
+        <!-- Custom CSS -->
+        <link href="info/css/freelancer.css" rel="stylesheet">
 
-<p>SalchiMVC, permite el manejo de un proyecto PHP utilizando el patrón MVC (Modelo Vista Controlador).
-Proporciona las diferentes capas para el correcto uso y gestión de clases, objetos y metodos.</p>
+        <!-- Custom Fonts -->
+        <link href="info/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
-<p><strong>Release note:</strong> Current release (1.0) .</p>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
-<h2>
-<a id="contacto" class="anchor" href="#contacto" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contacto</h2>
+    </head>
 
-<p>Rodrigo Contreras B.</p>
+    <body id="page-top" class="index">
 
-<p>Mail <a href="mailto:rodrigo.rcb@gmail.com">rodrigo.rcb@gmail.com</a></p>
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#page-top">Salchi-MVC</a>
+                </div>
 
-<h2>
-<a id="detalle-estructura-mvc" class="anchor" href="#detalle-estructura-mvc" aria-hidden="true"><span class="octicon octicon-link"></span></a>Detalle Estructura MVC</h2>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#portfolio">Acerca</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#about">Estructura</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#contact">Descarga</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
 
-<p>Contiene el Framework MVC
-<strong>/app</strong></p>
+        <!-- Header -->
+        <header style="background: url('info/img/background.png') repeat">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="intro-text">
+                            <h1 class="name" style="text-shadow: 5px 5px 5px black;">Salchi-MVC</h1>
+                            <span class="skills" style="text-shadow: 5px 5px 5px black;">Un simple framework MVC & API para proyectos PHP/MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-<pre><code>**/api**
-Disponibilizacion en una simple API para consulta de métodos en salida JSON
+        <!-- Portfolio Grid Section -->
+        <section id="portfolio">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2>Acerca</h2>
+                        <hr class="star-primary">
+                    </div>
+                </div>
 
-**/business**
-Funciones de negocio y generales asociadas a objetos del tipo
+                <div class="row" style="text-align: center"> 
+                    <p>Detalle: Simple MVC & API PHP, permite el manejo de un proyecto PHP utilizando el patrón MVC.</p> 
+                    <p>Proporciona las diferentes capas para el correcto uso y gestión de clases, objetos y metodos.</p>
+                    <p>Versión Actual: 1.0</p>
+                </div>
 
-**/dao**
-Acceso a datos SQL para el objeto del tipo
-
-**/dump**
-Salida de SQL de ejemplo
-
-**/model**
-Representación en clase para los objetos de tabla
-
-**/utils**
-Funciones útiles para la configuración del proyecto
-</code></pre>
+            </div>
         </section>
 
-        <aside id="sidebar">
-          <a href="https://github.com/rodrigocontrerasb/SalchiMVC/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/rodrigocontrerasb/SalchiMVC/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
+        <!-- About Section -->
+        <section class="success" id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2>Estructura</h2>
+                        <hr class="star-light">
+                    </div>
+                </div>
 
-          <p class="repo-owner"><a href="https://github.com/rodrigocontrerasb/SalchiMVC"></a> is maintained by <a href="https://github.com/rodrigocontrerasb">rodrigocontrerasb</a>.</p>
+                <div class="row">
+                    <div>
+                        <h3>Contiene el Framework MCV</h3>
+                        <a href="app/" target="_blank"><strong>/app</strong></a>
+                        <p>Contenedor Aplicación MVC</p>
 
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
-    </div>
+                        <div style="margin-left: 50px">
+                            <a href="app/api/" target="_blank"><strong>/api</strong></a>
+                            <p>Disponibilizacion en una simple API para consulta de métodos en salida JSON</p>
 
-  
-  </body>
+                            <a href="app/business/" target="_blank"><strong>/business</strong></a>
+                            <p>Funciones de negocio y generales asociadas a objetos del tipo</p>
+
+                            <a href="app/dao/" target="_blank"><strong>/dao</strong></a>
+                            <p>Acceso a datos SQL para el objeto del tipo</p>
+
+                            <a href="app/dump/" target="_blank"><strong>/dump</strong></a>
+                            <p>Salida de SQL de ejemplo</p>
+
+                            <a href="app/model/" target="_blank"><strong>/model</strong></a>
+                            <p>Representación en clase para los objetos de tabla</p>
+
+                            <a href="app/utils/" target="_blank"><strong>/utils</strong></a>
+                            <p>Funciones útiles para la configuración del proyecto
+                        </div>
+
+                        <a href="example/"><strong>/example</strong></a>
+                        <p>Ejemplo de Aplicación y uso bajo el modelo MVC propuesto</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2>Descarga</h2>
+                        <hr class="star-primary">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 text-center">
+                        <p>SalchiMVC está disponible para descarga libre en GitHub!!</p>
+                        <a href="https://github.com/rodrigocontrerasb/SalchiMVC/archive/master.zip" class="btn btn-lg">
+                            <i class="btn btn-success btn-lg"><span class="glyphicon glyphicon-download-alt"></span> Descargar .ZIP</i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center">
+            <div class="footer-above">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-col col-md-4">
+                            <h3>Proyecto</h3>
+                            <p><a href="https://github.com/rodrigocontrerasb/SalchiMVC">Visitar en GitHub</a></p>
+                        </div>
+                        <div class="footer-col col-md-4">
+                            <h3>Acceso Redes Sociales</h3>
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="https://twitter.com/androidapps_cl" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/rodrigocontrerasbenz" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="footer-col col-md-4">
+                            <h3>Contacto Desarrollador</h3>
+                            <p>Rodrigo Contreras B</p>
+                            <p><a href="mailto:rodrigo.rcb@gmail.com">rodrigo.rcb@gmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-below">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            Salchi-MVC (2015 - 2016) - Un simple framework MVC & API para proyectos PHP/MySQL
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+        <div class="scroll-top page-scroll visible-xs visible-sm">
+            <a class="btn btn-primary" href="#page-top">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+        </div>
+
+        <!-- jQuery -->
+        <script src="info/js/jquery.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="info/js/bootstrap.min.js"></script>
+
+        <!-- Plugin JavaScript -->
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+        <script src="info/js/classie.js"></script>
+        <script src="info/js/cbpAnimatedHeader.js"></script>
+
+        <!-- Contact Form JavaScript -->
+        <script src="info/js/jqBootstrapValidation.js"></script>
+        <script src="info/js/contact_me.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="info/js/freelancer.js"></script>
+
+    </body>
+
 </html>
