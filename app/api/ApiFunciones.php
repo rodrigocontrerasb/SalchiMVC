@@ -17,7 +17,8 @@ class ApiFunciones {
      * @return $salida
      * @throws Exception
      * @author Rodrigo Contreras B. <rodrigo.rcb@gmail.com>
-     * @version 2015-12-07
+     * @version 2015-12-07 - Version Inicial
+     * @version 2015-12-29 - Simplificacion metodo de llamados
      * @since 2015-12-07
      */
     function getFunction(index $index) {
@@ -31,46 +32,22 @@ class ApiFunciones {
         // Caso Error, no existe accion
         if ($index->getTipo() == "Error") {
             $salida = $index;
+        } else {
+            $metodo = null;
+            $salida = 'Seleccione un metodo';
         }
 
-        // Funciones Disponibles
-        // 
-        // Usuario -------------------------------------------------------------
-        // Listar Usuario
-        if ($index->getAccion() == "listarUsuario") {
-            $usuario = new Usuario();
-            $usuario = $usuarioBusiness->requestToUsuario($request);
-            $salida = $usuarioBusiness->listarUsuario($usuario);
+        // Ejecucion de Funciones
+        $usuario = new Usuario();
+        $usuario = $usuarioBusiness->requestToUsuario($request);
+
+        // Llamado Metodo
+        $metodo = $index->getAccion();
+        if ($metodo != null) {
+            $salida = $usuarioBusiness->$metodo($usuario);
         }
 
-        // Listar Usuarios
-        if ($index->getAccion() == "listarUsuarios") {
-            $salida = $usuarioBusiness->listarUsuarios();
-        }
-
-        // Crear Usuario
-        if ($index->getAccion() == "crearUsuario") {
-            $usuario = new Usuario();
-            $usuario = $usuarioBusiness->requestToUsuario($request);
-            $salida = $usuarioBusiness->crearUsuario($usuario);
-        }
-
-        // Modificar Usuario
-        if ($index->getAccion() == "modificarUsuario") {
-            $usuario = new Usuario();
-            $usuario = $usuarioBusiness->requestToUsuario($request);
-            $salida = $usuarioBusiness->modificarUsuario($usuario);
-        }
-
-        // Eliminar Usuario
-        if ($index->getAccion() == "eliminarUsuario") {
-            $usuario = new Usuario();
-            $usuario = $usuarioBusiness->requestToUsuario($request);
-            $salida = $usuarioBusiness->eliminarUsuario($usuario);
-        }
-
-        // Otras ---------------------------------------------------------------
-
+        // Retorno
         return $salida;
     }
 
