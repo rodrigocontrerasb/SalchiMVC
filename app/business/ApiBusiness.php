@@ -75,22 +75,6 @@ class ApiBusiness {
     }
 
     /**
-     * Funcion: goFunction   
-     * Descripcion: Envia a la funcion asociada a la accion por parametro
-     * @param api $api
-     * @return $salida
-     * @throws Exception
-     * @author Rodrigo Contreras B. <rodrigo.rcb@gmail.com>
-     * @version 2015-12-07
-     * @since 2015-12-07
-     */
-    public function goFunction(api $api) {
-
-        $salida = $this->getFunction($api);
-        return $salida;
-    }
-
-    /**
      * Funcion: verSalida   
      * Descripcion: Genera la salida en el formato solicitado
      * @param api $api

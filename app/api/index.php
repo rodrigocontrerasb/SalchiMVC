@@ -27,7 +27,7 @@ $apiBusiness = new ApiBusiness();
 $apiBusiness->setParameters($api);
 
 // Llamado a funcion
-$salida = $apiBusiness->goFunction($api);
+$salida = $apiBusiness->getFunction($api);
 
 // Salida de Valores
 $apiBusiness->verSalida($salida, $api);
