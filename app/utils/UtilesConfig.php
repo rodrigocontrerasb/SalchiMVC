@@ -14,7 +14,7 @@ class UtilesConfig {
     // Atributos
     private $serverHost = "localhost";
     private $serverUser = "root";
-    private $serverPass = ""; // Pass de server MySQL.
+    private $serverPass = "";
     private $serverDb = "test";
     private $serverMetodo = "mysqli";   //mysql, mysqli (Recomendado = mysqli)
 

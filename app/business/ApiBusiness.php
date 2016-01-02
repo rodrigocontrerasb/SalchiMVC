@@ -10,6 +10,16 @@
  */
 class ApiBusiness {
 
+    /**
+     * Funcion: setIncludes   
+     * Descripcion: Setea los includes
+     * @param api $api
+     * @return --
+     * @throws Exception
+     * @author Rodrigo Contreras B. <rodrigo.rcb@gmail.com>
+     * @version 2015-12-07 - Version Inicial
+     * @since 2015-12-07
+     */
     function setIncludes(api $api) {
 
         $controller = $api->getController();

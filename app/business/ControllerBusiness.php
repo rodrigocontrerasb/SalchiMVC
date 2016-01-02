@@ -1,11 +1,29 @@
 <?php
 
+/**
+ * Business: Controller 
+ * Descripcion: Funciones generales asociadas a objetos del tipo controller
+ * Objetivo: Entregar el conjunto de acciones, que finalmente seran presentadas en la vista
+ * @author Rodrigo Contreras B. <rodrigo.rcb@gmail.com>
+ * @version 2016-01-02
+ * @since 2016-01-02
+ */
 class ControllerBusiness {
 
+    /**
+     * Funcion: getParameteres   
+     * Descripcion: Obtienes los parametros de usuario hacia el controlador
+     * @return $_GET
+     * @throws Exception
+     * @author Rodrigo Contreras B. <rodrigo.rcb@gmail.com>
+     * @version 2015-12-07 - Version Inicial
+     * @version 2015-12-29 - Simplificacion metodo de llamados
+     * @since 2015-12-07
+     */
     function getParameteres() {
 
         if (!isset($_GET['controller'])) {
-            echo 'No se ha especificado controlador';
+            echo 'ERROR: No se ha especificado controlador';
             exit;
         }
 
@@ -16,6 +34,16 @@ class ControllerBusiness {
         return $_GET;
     }
 
+    /**
+     * Funcion: includes   
+     * Descripcion: Incluye los archivos necesarios para las clases
+     * @param $params
+     * @return --
+     * @throws Exception
+     * @author Rodrigo Contreras B. <rodrigo.rcb@gmail.com>
+     * @version 2016-01-02 - Version Inicial
+     * @since 2016-01-02
+     */
     function includes($params) {
 
         // Includes
@@ -36,6 +64,16 @@ class ControllerBusiness {
         }
     }
 
+    /**
+     * Funcion: callController   
+     * Descripcion: Llama al controlador
+     * @param $params
+     * @throws Exception
+     * @author Rodrigo Contreras B. <rodrigo.rcb@gmail.com>
+     * @version 2015-12-07 - Version Inicial
+     * @version 2016-01-02 - Agregar Validaciones
+     * @since 2015-12-07
+     */
     function callController($params) {
 
         $this->includes($params);
@@ -44,8 +82,21 @@ class ControllerBusiness {
         //$usuarioController->$params['method']($params);
 
         $obj = $params['controller'] . 'Controller';
-        $objController = new $obj();
-        $objController->$params['action']($params);
+
+        if (class_exists($obj)) {
+            $objController = new $obj();
+
+            if (method_exists($objController, $params['action'])) {
+                $objController->$params['action']($params);
+            } else {
+
+                echo 'ERROR: No existe la accion especificada';
+                exit;
+            }
+        } else {
+            echo 'ERROR: No existe el controlador especificado';
+            exit;
+        }
     }
 
 }
