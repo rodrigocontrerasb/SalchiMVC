@@ -23,7 +23,7 @@ if (idPagina == 'usuario_detalle') {
 // Funciones
 function listarUsuarios() {
 
-    var URL_SERVICIO = URL_API + 'accion=listarUsuarios';
+    var URL_SERVICIO = URL_API + 'controller=Usuario&action=listarUsuarios';
 
     $.getJSON(URL_SERVICIO, function (data) {
         salida = "";
@@ -38,7 +38,7 @@ function listarUsuarios() {
 
 function listarUsuario(id) {
 
-    var URL_SERVICIO = URL_API + 'accion=listarUsuario&id=' + id;
+    var URL_SERVICIO = URL_API + 'controller=Usuario&action=listarUsuario&id=' + id;
 
     $.getJSON(URL_SERVICIO, function (data) {
         salida = "<div>" + data.nombres + " " + data.paterno + " " + data.materno + "</div>";

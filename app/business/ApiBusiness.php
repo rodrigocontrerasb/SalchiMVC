@@ -10,6 +10,23 @@
  */
 class ApiBusiness {
 
+    function setIncludes(api $api) {
+
+        $controller = $api->getController();
+
+        if (file_exists('../model/' . $controller . '.php')) {
+            include '../model/' . $controller . '.php';
+        }
+
+        if (file_exists('../business/' . $controller . 'Business.php')) {
+            include '../business/' . $controller . 'Business.php';
+        }
+
+        if (file_exists('../dao/' . $controller . 'Dao.php')) {
+            include '../dao/' . $controller . 'Dao.php';
+        }
+    }
+
     /**
      * Funcion: getFunction   
      * Descripcion: Dirige la peticion a la funcion correspondiente
@@ -23,28 +40,61 @@ class ApiBusiness {
      */
     function getFunction(api $api) {
 
-        // Librerias Adicionales
-        $usuarioBusiness = new UsuarioBusiness();
-
-        // Almacena el request
+        // Variables Generales
         $request = $this->setRequest();
+        $withRequest = 0;
 
-        // Caso Error, no existe accion
-        if ($api->getTipo() == "Error") {
+        // Librerias
+        $controller = $api->getController();
+        $controllerBusiness = $api->getController() . 'Business';
+
+        // Crea objeto si existe la clase
+        if (!class_exists($controllerBusiness)) {
+
+            $api->setTipo("Error");
+            $api->setMensaje("No existe el Controlador Asociado");
             $salida = $api;
         } else {
-            $metodo = null;
-            $salida = 'Seleccione un metodo';
-        }
 
-        // Ejecucion de Funciones (Este obejto a depender del tipo de llamado 'model=usuario')
-        $usuario = new Usuario();
-        $usuario = $usuarioBusiness->requestToUsuario($request);
+            // Creacion del Objeto Business correspondiente
+            $objBusiness = new $controllerBusiness();
 
-        // Llamado Metodo
-        $metodo = $api->getAccion();
-        if ($metodo != null) {
-            $salida = $usuarioBusiness->$metodo($usuario);
+            // Creacion del objeto controlador
+            if (file_exists('../model/' . $controller . '.php')) {
+                $obj = new $controller();
+            }
+
+            // Verificacion de existencia business
+            if (file_exists('../business/' . $controller . 'Business.php')) {
+
+                // Identificacion de funcion requestToObjeto
+                $req = 'requestTo' . $controller;
+
+                // Verificacion de existencia de metodo dentro de clase
+                if (method_exists($objBusiness, $req)) {
+                    $obj = $objBusiness->$req($request);
+                    $withRequest = 1;
+                }
+            }
+
+            // Identificacion Metodo
+            $metodo = $api->getAccion();
+
+            if (!method_exists($objBusiness, $metodo)) {
+                $api->setTipo("Error");
+                $api->setMensaje("No existe el Metodo Asociado");
+
+                $salida = $api;
+            } else {
+
+                // Llamado a metodo para salida de datos
+                if ($withRequest == 1) {
+
+                    $salida = $objBusiness->$metodo($obj);
+                } else {
+                    $salida = $objBusiness->$metodo();
+                }
+            }
         }
 
         // Retorno
@@ -66,11 +116,23 @@ class ApiBusiness {
         // Obtener Request del Tipo GET o POST
         $request = $this->setRequest();
 
-        if (isset($request['accion'])) {
-            $api->setAccion($request['accion']);
+        if (isset($request['controller'])) {
+            $api->setController($request['controller']);
         } else {
             $api->setTipo("Error");
-            $api->setMensaje("No ha ingresado accion a realizar");
+            $api->setMensaje("No ha ingresado controlador");
+        }
+
+        if (isset($request['action'])) {
+            $api->setAccion($request['action']);
+        } else {
+            $api->setTipo("Error");
+            $api->setMensaje("No ha ingresado accion");
+        }
+
+        if ($api->getTipo() == 'Error') {
+            echo json_encode($api);
+            exit;
         }
     }
 

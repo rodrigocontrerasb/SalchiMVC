@@ -12,10 +12,20 @@ class Api {
 
     // Parametros
     public $accion;
+    public $controller;
     public $tipo;
     public $mensaje;
 
     // Getters y Seters
+    function getController() {
+        return $this->controller;
+    }
+
+    function setController($controller) {
+        $this->controller = $controller;
+    }
+
+    
     function getAccion() {
         return $this->accion;
     }

@@ -2,12 +2,10 @@
 
 include '../utils/UtilesGeneral.php';
 include '../utils/UtilesConfig.php';
-include '../model/Api.php';
-include '../model/Usuario.php';
-include '../business/ApiBusiness.php';
-include '../business/UsuarioBusiness.php';
-include '../dao/UsuarioDao.php';
 include '../dao/Conn.php';
+include '../model/Api.php';
+include '../business/ApiBusiness.php';
+
 
 /**
  * Ejecucion: Proceso de Ejecucion API, librerias y clases  
@@ -25,6 +23,9 @@ $apiBusiness = new ApiBusiness();
 
 // Seteao de Parametros Get y/o Post
 $apiBusiness->setParameters($api);
+
+// Includes
+$apiBusiness->setIncludes($api);
 
 // Llamado a funcion
 $salida = $apiBusiness->getFunction($api);
