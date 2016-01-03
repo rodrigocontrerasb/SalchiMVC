@@ -24,8 +24,8 @@ Contiene el Framework MVC
 	**/business**
 	Funciones de negocio y generales asociadas a objetos del tipo
 	
-        **/controller**
-        Disponibilización del controlador para el MVC
+    **/controller**
+    Disponibilización del controlador para el MVC
 
 	**/dao**
 	Acceso a datos SQL para el objeto del tipo
@@ -39,8 +39,8 @@ Contiene el Framework MVC
 	**/utils**
 	Funciones útiles para la configuración del proyecto
 
-        **/view**
-        Vistas HTML para cada uno de los métodos registrados en el controlador
+    **/view**
+    Vistas HTML para cada uno de los métodos registrados en el controlador
 
 
     **/example**
@@ -48,4 +48,4 @@ Contiene el Framework MVC
 
 
 ---
-2016 - Rodrigo Contreras B.
+2015 - 2016 - Rodrigo Contreras B.

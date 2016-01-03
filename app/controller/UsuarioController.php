@@ -23,7 +23,7 @@ class UsuarioController {
     function index() {
 
         // llamado a la vista
-        include 'view/usuario/index.php';
+        include 'app/view/usuario/index.php';
     }
 
     /**
@@ -43,7 +43,7 @@ class UsuarioController {
         $data['usuarios'] = $usuarioBusiness->listarUsuarios();
 
         // llamado a la vista
-        include 'view/usuario/listarUsuarios.php';
+        include 'app/view/usuario/listarUsuarios.php';
     }
 
     /**
@@ -67,7 +67,7 @@ class UsuarioController {
         $data['usuario'] = $usuarioBusiness->listarUsuario($usuario);
 
         // llamado a la vista
-        include 'view/usuario/listarUsuario.php';
+        include 'app/view/usuario/listarUsuario.php';
     }
 
 }

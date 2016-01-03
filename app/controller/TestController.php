@@ -23,7 +23,7 @@ class TestController {
     function index() {
 
         // llamado a la vista
-        include 'view/test/index.php';
+        include 'app/view/test/index.php';
     }
 
 }

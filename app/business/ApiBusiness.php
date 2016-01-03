@@ -126,6 +126,10 @@ class ApiBusiness {
         // Obtener Request del Tipo GET o POST
         $request = $this->setRequest();
 
+        // Verifica paso de parametros formato tipo friendlyurl
+        $request = $this->getFriendly();
+
+        // Proceso General
         if (isset($request['controller'])) {
             $api->setController($request['controller']);
         } else {
@@ -144,6 +148,52 @@ class ApiBusiness {
             echo json_encode($api);
             exit;
         }
+    }
+
+    /**
+     * Funcion: getFriendly   
+     * Descripcion: Obtienes los parametros de usuario desde frienlyurl
+     * @return $_GET
+     * @throws Exception
+     * @author Rodrigo Contreras B. <rodrigo.rcb@gmail.com>
+     * @version 2016-01-03 - Version Inicial
+     * @since 2016-01-03
+     */
+    function getFriendly() {
+
+        // Url llamada Web
+        $url = "http://" . $_SERVER['HTTP_HOST'] . ":" . $_SERVER['SERVER_PORT'] . $_SERVER['REQUEST_URI'];
+
+        // Verificacion de existencia Get
+        if (!isset($_GET['controller'])) {
+
+            if (strpos($url, 'index.php') !== false) {
+
+                // Verificacion de paramatros tipo API, si existen se usan en GET
+                $params = $_SERVER['REQUEST_URI'];
+                $params = explode('index.php/', $params);
+                if (isset($params[1])) {
+                    $params = explode('/', $params[1]);
+                }
+
+                if (isset($params[0])) {
+                    $_GET['controller'] = $params[0];
+                }
+
+                if (isset($params[1])) {
+                    $_GET['action'] = $params[1];
+                    if ($_GET['action'] == '') {
+                        $_GET['action'] = 'index';
+                    }
+                }
+
+                if (isset($params[2])) {
+                    $_GET['id'] = $params['2'];
+                }
+            }
+        }
+
+        return $_GET;
     }
 
     /**
